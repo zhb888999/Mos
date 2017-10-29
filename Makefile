@@ -60,3 +60,7 @@ clean:
 	
 run:
 	bochs -f bochs.src
+git:
+	git add .
+	git commit
+	git push origin master

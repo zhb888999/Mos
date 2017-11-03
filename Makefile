@@ -61,4 +61,6 @@ clean:
 run:
 	bochs -f bochs.src
 git:
+	git add .
+	git commit -m "最新"
 	git push origin master

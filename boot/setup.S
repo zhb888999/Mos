@@ -18,6 +18,8 @@ begdata:
 begbss:
 .text
 _start:
+/** 屏幕显示
+*/
 	movw	%cs,%ax
 	movw	%ax,%es
 	movw	$10,%cx
@@ -55,7 +57,6 @@ _start:
 * bl = 安装的显示内存。0x00 - 64KB；0x01 - 128KB；0x03 = 256KB。
 * cx = 显示卡特性参数。
 */
-//太过复杂，测试代码
 	movb	$0x12,%ah
 	movb	$0x10,%bl
 	int 	$0x10
@@ -146,7 +147,11 @@ is_disk1:
 	movb	$0x03,%cl
 	int 	$0x13
 
-/** VGA显卡，al = 0x13 320*200*8位彩色
+/** VGA显卡，al = 0x03 ,设置显示模式（占用地址范围0xb8000~0xbc000)
+* 偶字节存放字符代码，奇字节存放属性
+* D7 D6 D5 D4 D3 D2 D1 D0
+* BL R  G  B  I  R 	G  B
+* 闪烁 背景色 高亮度 前景色
 */
 	movb 	$0x03,%al
 	movb	$0x00,%ah
@@ -222,7 +227,6 @@ flush_instr:
     movw    %cs, %si
     subw    $0x0020, %si
     shll    $4, %esi            # Convert to 32-bit pointer
-#loop:	jmp	 loop
 	.byte 0x66, 0xea            # prefix + jmpi-opcode
 code32:    
 	.long    0x000000             # will be set to 0x100000

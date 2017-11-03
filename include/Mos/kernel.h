@@ -22,6 +22,8 @@
 extern unsigned int fg_console;
 extern unsigned char font_arrt;
 void console_print(const char * str);
+void consloe_clear(void);
+void consloe_set_cursor(void);
 int printf(const char *fmt, ...);
 int printk(const char *fmt, ...);
 

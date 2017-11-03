@@ -1,4 +1,4 @@
-mes = "最新"
+mes = 最新
 AS = as
 LD = ld
 CC = gcc
@@ -63,5 +63,5 @@ run:
 	bochs -f bochs.src
 git:
 	git add .
-	git commit -m "$(CFLAGS)"
+	git commit -m "$(mes)"
 	git push origin master

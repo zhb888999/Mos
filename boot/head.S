@@ -134,7 +134,7 @@ L6:
 
 /* This is the default interrupt "handler" :-) */
 int_msg:
-	.asciz "Unknown interrupt\n\r"
+	.asciz "Unknown interrupt\n"
 .align 4
 ignore_int:
 	pushl %eax

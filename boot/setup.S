@@ -1,10 +1,11 @@
-DEF_INITSEG = 0x9000
-DEF_SYSSEG = 0x1000
-//保存BIOS读取的各硬件信息的基地址段
+#include <Mos/config.h>
 
-DEF_MES = DEF_INITSEG
+INITSEG  = DEF_INITSEG
+SYSSEG   = DEF_SYSSEG
+SETUPSEG = DEF_SETUPSEG
+MESSEG = DEF_INITSEG
 
-/** 1-8字节存放内存大小的值:
+/** 1-8字节存放内存大小的值
 ***************************************************************
 * 1-2 ax(低于16M的扩展内存大小（单位1KB，最大0x3c00）)      	  *
 * 3-4 bx(大于16M的扩展内存大小（单位64KB，最大4GB），或为0)  	  *
@@ -39,11 +40,6 @@ DEF_MES = DEF_INITSEG
 
 /** 49-64字节存放第二个磁盘参数表 **/
 
-DEF_SETUPSEG = 0x9020
-INITSEG = DEF_INITSEG
-SETUPSEG = DEF_SETUPSEG
-SYSSEG = DEF_SYSSEG
-MESSEG = DEF_MES
 .code16
 .text
 .globl _start, begtext, begdata, begbss, endtext, enddata, endbss
@@ -201,8 +197,8 @@ is_disk1:
 
 do_move:
 	movw	%ax,%es
-	addw	$0x1000,%ax
-	cmp		$0x9000,%ax
+	addw	$SYSSEG,%ax
+	cmp		$INITSEG,%ax
 	jz		end_move
 	movw	%ax,%ds
 	subw	%di,%di

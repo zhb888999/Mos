@@ -100,15 +100,15 @@ LOAD kernel/chr_drv/chr_drv.a
  *(.text.hot .text.hot.*)
  *(.text .stub .text.* .gnu.linkonce.t.*)
  .text          0x0000000000000000     0x64b8 boot/head.o
-                0x0000000000000000                _pg_dir
                 0x0000000000000000                _start
+                0x0000000000000000                pg_dir
                 0x0000000000001000                pg0
                 0x0000000000002000                pg1
                 0x0000000000003000                pg2
                 0x0000000000004000                pg3
-                0x0000000000005000                _tmp_floppy_area
-                0x00000000000054b8                _idt
-                0x0000000000005cb8                _gdt
+                0x0000000000005000                tmp_floppy_area
+                0x00000000000054b8                idt
+                0x0000000000005cb8                gdt
  *fill*         0x00000000000064b8        0x8 
  .text          0x00000000000064c0       0xeb init/Main.o
                 0x00000000000064c0                Main

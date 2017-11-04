@@ -1,13 +1,7 @@
 #include <Mos/kernel.h>
 #include <asm/system.h>
 //system模块最大32768行
-extern char *_pg_dir;
-extern char *pg0;
-extern char *pg1;
-extern char *pg2;
-extern char *pg3;
-extern char *_gdt;
-extern char *_idt;
+#include <Mos/head.h>
 struct {
 	long *a;
 	short int *b;
@@ -24,13 +18,13 @@ void Main(void)
 	outb(0x36,0x43);
 	outb(0x9a,0x40);
 	outb(0x2e,0x40);
-	printk("pg_dir:%p\n",&_pg_dir);
+	printk("pg_dir:%p\n",&pg_dir);
 	printk("pg0:%p\n",&pg0);
 	printk("pg1:%p\n",&pg1);
 	printk("pg2:%p\n",&pg2);
 	printk("pg3:%p\n",&pg3);
-	printk("gdt:%p\n",&_gdt);
-	printk("idt:%p\n",&_idt);
+	printk("gdt:%p\n",&gdt);
+	printk("idt:%p\n",&idt);
 	printk("init_stack:%p\n",&init_stack);
 	printk("mem_size:%d\n",mem_size);
 	asm("int $0x18"::);

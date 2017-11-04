@@ -2,10 +2,10 @@
 unsigned int fg_console = 0;
 unsigned char font_arrt = 0x0f;
 void consloe_set_cursor(void) {
-	OUTW(14,0x3d4);
-	OUTW(((fg_console)>>8)&0xff,0x3d5);
-	OUTW(15,0x3d4);
-	OUTW((fg_console)&0xff,0x3d5);
+	outw(14,0x3d4);
+	outw(((fg_console)>>8)&0xff,0x3d5);
+	outw(15,0x3d4);
+	outw((fg_console)&0xff,0x3d5);
 }
 void consloe_clear(void) {
 	char *p = (char *)(0xb8000);

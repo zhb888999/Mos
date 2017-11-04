@@ -17,25 +17,18 @@
 .LC7:
 	.string	"init_stack:%p\n"
 .LC8:
-	.string	"mem_low_size:%d\n"
-.LC9:
-	.string	"mem_hi_size:%d\n"
-.LC10:
 	.string	"mem_size:%d\n"
 	.section	.text.unlikely,"ax",@progbits
-.LCOLDB11:
+.LCOLDB9:
 	.text
-.LHOTB11:
+.LHOTB9:
 	.p2align 4,,15
 	.globl	Main
 	.type	Main, @function
 Main:
 .LFB0:
 	.cfi_startproc
-	pushl	%ebx
-	.cfi_def_cfa_offset 8
-	.cfi_offset 3, -8
-	subl	$16, %esp
+	subl	$20, %esp
 	.cfi_def_cfa_offset 24
 	movzwl	589824, %edx
 	movzwl	589826, %eax
@@ -47,7 +40,8 @@ Main:
 	shrw	$4, %ax
 	movzwl	%dx, %edx
 	movzwl	%ax, %eax
-	leal	1(%edx,%eax), %ebx
+	leal	1(%edx,%eax), %eax
+	movl	%eax, mem_size
 	call	printk
 	popl	%eax
 	.cfi_def_cfa_offset 28
@@ -116,31 +110,16 @@ Main:
 	.cfi_def_cfa_offset 28
 	popl	%eax
 	.cfi_def_cfa_offset 24
-	movzwl	589824, %eax
-	pushl	%eax
+	pushl	mem_size
 	.cfi_def_cfa_offset 28
 	pushl	$.LC8
 	.cfi_def_cfa_offset 32
 	call	printk
-	popl	%eax
-	.cfi_def_cfa_offset 28
-	movzwl	589826, %eax
-	popl	%edx
-	.cfi_def_cfa_offset 24
-	pushl	%eax
-	.cfi_def_cfa_offset 28
-	pushl	$.LC9
-	.cfi_def_cfa_offset 32
-	call	printk
-	popl	%ecx
-	.cfi_def_cfa_offset 28
-	popl	%eax
-	.cfi_def_cfa_offset 24
-	pushl	%ebx
-	.cfi_def_cfa_offset 28
-	pushl	$.LC10
-	.cfi_def_cfa_offset 32
-	call	printk
+#APP
+# 32 "init/Main.c" 1
+	sti
+# 0 "" 2
+#NO_APP
 	addl	$16, %esp
 	.cfi_def_cfa_offset 16
 	.p2align 4,,10
@@ -156,9 +135,10 @@ Main:
 .LFE0:
 	.size	Main, .-Main
 	.section	.text.unlikely
-.LCOLDE11:
+.LCOLDE9:
 	.text
-.LHOTE11:
+.LHOTE9:
+	.comm	mem_size,4,4
 	.globl	init_stack
 	.data
 	.align 4

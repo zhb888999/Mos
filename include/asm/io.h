@@ -1,14 +1,18 @@
 #ifndef _IO_H
 #define _IO_H
-#define HLT() 								\
+#define hlt() 								\
 ({  										\
 	asm volatile("hlt":::); 				\
 })
-#define CLI() 								\
+#define cli() 								\
 ({  										\
 	asm volatile("cli":::); 				\
 })
-#define OUTB(value,port) 					\
+#define sti() 								\
+({  										\
+	asm volatile("sti":::); 				\
+})
+#define outb(value,port) 					\
 ({											\
 	asm volatile("outb %%al,%%dx\n\t" 		\
 					: 						\
@@ -16,7 +20,7 @@
 					:						\
 				); 							\
 })
-#define OUTW(value,port) 					\
+#define outw(value,port) 					\
 ({											\
 	asm volatile("outw %%ax,%%dx\n\t" 		\
 					: 						\
@@ -24,7 +28,7 @@
 					: 						\
 				);							\
 })
-#define OUTL(value,port) 					\
+#define outl(value,port) 					\
 ({											\
 	asm volatile("outl %%eax,%%dx\n\t" 		\
 					: 						\
@@ -32,7 +36,7 @@
 					: 						\
 					);						\
 })
-#define INB(port) 							\
+#define inb(port) 							\
 ({  										\
 	unsigned char v; 						\
 	asm volatile ("inb %%dx,%%al" 			\
@@ -42,7 +46,7 @@
 				); 							\
 	v; 										\
 })
-#define INW(port)						 	\
+#define inw(port)						 	\
 ({ 											\
 	unsigned short int v; 					\
 	asm volatile ("inw %%dx,%%ax" 			\
@@ -52,7 +56,7 @@
 				); 							\
 	v;										\
 })
-#define INL(port) 							\
+#define inl(port) 							\
 ({ 											\
 unsigned int v; 							\
 	asm volatile ("inl %%dx,%%eax" 			\
@@ -62,7 +66,7 @@ unsigned int v; 							\
 				); 							\
 	v; 										\
 })
-#define STORE_EFLAGS(eflags) 				\
+#define store_eflags(eflags) 				\
 ({											\
 	asm volatile("pushf\n\t" 				\
 				 "pop	%%eax\n\t" 			\
@@ -71,7 +75,7 @@ unsigned int v; 							\
 					: 						\
 					); 						\
 })
-#define LOAD_EFLAGS(eflags)					\
+#define load_eflags(eflags)					\
 ({											\
 	asm volatile("push	%%eax\n\t" 			\
 				 "popf\n\t"					\

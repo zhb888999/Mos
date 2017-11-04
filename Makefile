@@ -12,13 +12,13 @@ ARCHIVES=kernel/kernel.o
 DRIVERS =kernel/chr_drv/chr_drv.a
 
 .c.s:
-	$(CC) $(CFLAGS) \
-	-nostdinc -Iinclude -S -o $*.s $<
+	$(CC) $(CFLAGS) $(CPPFLAGS)\
+	-S -o $*.s $<
 .s.o:
 	$(AS) -c -o $*.o $<
 .c.o:
-	$(CC) $(CFLAGS) \
-	-nostdinc -Iinclude -c -o $*.o $<
+	$(CC) $(CFLAGS) $(CPPFLAGS)\
+	-c -o $*.o $<
 	
 all: fd.img
 

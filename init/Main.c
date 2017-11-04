@@ -6,6 +6,7 @@ extern char *pg1;
 extern char *pg2;
 extern char *pg3;
 extern char *_gdt;
+extern char *_idt;
 struct {
 	long *a;
 	short int *b;
@@ -13,12 +14,13 @@ struct {
 
 void Main(void)
 {
-	printk("_pg_dir:%p\n",&_pg_dir);
+	printk("pg_dir:%p\n",&_pg_dir);
 	printk("pg0:%p\n",&pg0);
 	printk("pg1:%p\n",&pg1);
 	printk("pg2:%p\n",&pg2);
 	printk("pg3:%p\n",&pg3);
-	printk("_gdt:%p\n",&_gdt);
+	printk("gdt:%p\n",&_gdt);
+	printk("idt:%p\n",&_idt);
 	printk("init_stack:%p\n",&init_stack);
 	for(;;)
 		HLT();

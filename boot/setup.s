@@ -5,8 +5,9 @@
 DEF_INITSEG = 0x9000
 DEF_SYSSEG = 0x1000
 
+
 DEF_MES = DEF_INITSEG
-# 40 "boot/setup.S"
+# 42 "boot/setup.S"
 DEF_SETUPSEG = 0x9020
 INITSEG = DEF_INITSEG
 SETUPSEG = DEF_SETUPSEG
@@ -39,7 +40,7 @@ _start:
  movw $MESSEG,%ax
  movw %ax,%es
  movw %ax,%ds
-# 84 "boot/setup.S"
+# 86 "boot/setup.S"
  movw $0xe801, %ax
  int $0x15
  movw %ax,%es:0
@@ -120,7 +121,7 @@ no_disk1:
  rep
  stosb
 is_disk1:
-# 176 "boot/setup.S"
+# 178 "boot/setup.S"
  movw $MESSEG, %ax
  movw %ax, %es
  xorw %bx,%bx

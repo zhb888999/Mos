@@ -32,37 +32,37 @@
 00000000000i[     ]   SB16 support: yes
 00000000000i[     ]   USB support: yes
 00000000000i[     ]   VGA extension support: vbe cirrus
-00000000000i[MEM0 ] allocated memory at 0xb384a008. after alignment, vector=0xb384b000
+00000000000i[MEM0 ] allocated memory at 0xb389a008. after alignment, vector=0xb389b000
 00000000000i[MEM0 ] 32.00MB
 00000000000i[MEM0 ] mem block size = 0x00100000, blocks=32
 00000000000i[MEM0 ] rom at 0xfffe0000/131072 ('/usr/share/bochs/BIOS-bochs-latest')
-00000000000i[     ] lt_dlhandle is 0x9fb5b18
+00000000000i[     ] lt_dlhandle is 0xb675b18
 00000000000i[PLGIN] loaded plugin libbx_hdimage.so
-00000000000i[     ] lt_dlhandle is 0x9fb6050
+00000000000i[     ] lt_dlhandle is 0xb676050
 00000000000i[PLGIN] loaded plugin libbx_pci.so
-00000000000i[     ] lt_dlhandle is 0x9fb67e8
+00000000000i[     ] lt_dlhandle is 0xb6767e8
 00000000000i[PLGIN] loaded plugin libbx_pci2isa.so
-00000000000i[     ] lt_dlhandle is 0x9fb6e60
+00000000000i[     ] lt_dlhandle is 0xb676e60
 00000000000i[PLGIN] loaded plugin libbx_acpi.so
-00000000000i[     ] lt_dlhandle is 0x9fb74d8
+00000000000i[     ] lt_dlhandle is 0xb6774d8
 00000000000i[PLGIN] loaded plugin libbx_cmos.so
-00000000000i[     ] lt_dlhandle is 0x9fb7aa8
+00000000000i[     ] lt_dlhandle is 0xb677aa8
 00000000000i[PLGIN] loaded plugin libbx_dma.so
-00000000000i[     ] lt_dlhandle is 0x9fb8160
+00000000000i[     ] lt_dlhandle is 0xb678160
 00000000000i[PLGIN] loaded plugin libbx_pic.so
-00000000000i[     ] lt_dlhandle is 0x9fb8680
+00000000000i[     ] lt_dlhandle is 0xb678680
 00000000000i[PLGIN] loaded plugin libbx_pit.so
-00000000000i[     ] lt_dlhandle is 0x9fb8cf0
+00000000000i[     ] lt_dlhandle is 0xb678cf0
 00000000000i[PLGIN] loaded plugin libbx_floppy.so
-00000000000i[     ] lt_dlhandle is 0x9fb9540
+00000000000i[     ] lt_dlhandle is 0xb679540
 00000000000i[PLGIN] loaded plugin libbx_vga.so
-00000000000i[     ] lt_dlhandle is 0x9fb9a38
+00000000000i[     ] lt_dlhandle is 0xb679a38
 00000000000i[PLGIN] loaded plugin libbx_ioapic.so
-00000000000i[     ] lt_dlhandle is 0x9fba010
+00000000000i[     ] lt_dlhandle is 0xb67a010
 00000000000i[PLGIN] loaded plugin libbx_keyboard.so
-00000000000i[     ] lt_dlhandle is 0x9fba640
+00000000000i[     ] lt_dlhandle is 0xb67a640
 00000000000i[PLGIN] loaded plugin libbx_harddrv.so
-00000000000i[     ] lt_dlhandle is 0x9fcc2f8
+00000000000i[     ] lt_dlhandle is 0xb68c2f8
 00000000000i[PLGIN] loaded plugin libbx_pci_ide.so
 00000000000i[PLGIN] init_dev of 'pci' plugin device by virtual method
 00000000000i[PCI  ] 440FX Host bridge present at device 0, function 0
@@ -70,7 +70,7 @@
 00000000000i[PCI  ] PIIX3 PCI-to-ISA bridge present at device 1, function 0
 00000000000i[PLGIN] init_dev of 'cmos' plugin device by virtual method
 00000000000i[CMOS ] Using local time for initial clock
-00000000000i[CMOS ] Setting initial clock to: Sat Nov  4 04:16:11 2017 (time0=1509794171)
+00000000000i[CMOS ] Setting initial clock to: Sun Nov  5 00:10:46 2017 (time0=1509865846)
 00000000000i[PLGIN] init_dev of 'dma' plugin device by virtual method
 00000000000i[DMA  ] channel 4 used by cascade
 00000000000i[PLGIN] init_dev of 'pic' plugin device by virtual method
@@ -243,26 +243,67 @@
 00065714784e[BXVGA] unsupported io write to port 0x03d6, val=0x00
 00065715294e[BXVGA] unsupported io write to port 0x03d6, val=0x00
 00065715300e[BXVGA] unsupported io write to port 0x03d6, val=0x00
-00065715817e[BXVGA] unsupported io write to port 0x03d6, val=0x00
-00065715823e[BXVGA] unsupported io write to port 0x03d6, val=0x00
-00972800000p[XGUI ] >>PANIC<< POWER button turned off.
-00972800000i[CPU0 ] CPU is in protected mode (halted)
-00972800000i[CPU0 ] CS.mode = 32 bit
-00972800000i[CPU0 ] SS.mode = 32 bit
-00972800000i[CPU0 ] EFER   = 0x00000000
-00972800000i[CPU0 ] | EAX=0000000c  EBX=00000000  ECX=000002d0  EDX=000003d5
-00972800000i[CPU0 ] | ESP=0009efe4  EBP=000001a4  ESI=00090000  EDI=00000ffc
-00972800000i[CPU0 ] | IOPL=0 id vip vif ac vm rf nt of DF IF tf sf zf af PF cf
-00972800000i[CPU0 ] | SEG sltr(index|ti|rpl)     base    limit G D
-00972800000i[CPU0 ] |  CS:0008( 0001| 0|  0) 00000000 00ffffff 1 1
-00972800000i[CPU0 ] |  DS:0010( 0002| 0|  0) 00000000 00ffffff 1 1
-00972800000i[CPU0 ] |  SS:0010( 0002| 0|  0) 00000000 00ffffff 1 1
-00972800000i[CPU0 ] |  ES:0010( 0002| 0|  0) 00000000 00ffffff 1 1
-00972800000i[CPU0 ] |  FS:0010( 0002| 0|  0) 00000000 00ffffff 1 1
-00972800000i[CPU0 ] |  GS:0010( 0002| 0|  0) 00000000 00ffffff 1 1
-00972800000i[CPU0 ] | EIP=000065a9 (000065a9)
-00972800000i[CPU0 ] | CR0=0x80000013 CR2=0x00000000
-00972800000i[CPU0 ] | CR3=0x00000000 CR4=0x00000000
-00972800000i[CMOS ] Last time is 1509794414 (Sat Nov  4 04:20:14 2017)
-00972800000i[XGUI ] Exit
-00972800000i[CTRL ] quit_sim called with exit code 1
+00065715818e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065715824e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065716661e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065716667e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065717304e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065717310e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065717799e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065717805e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065718421e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065718427e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065719064e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065719070e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065719559e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065719565e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065720181e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065720187e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065720874e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065720880e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065721369e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065721375e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065721991e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065721997e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065722711e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065722717e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065723354e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065723360e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065723849e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065723855e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065724471e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065724477e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065725114e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065725120e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065725609e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065725615e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065726231e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065726237e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065726924e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065726930e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065727419e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065727425e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065728041e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065728047e[BXVGA] unsupported io write to port 0x03d6, val=0x00
+00065728057i[CPU0 ] WARNING: HLT instruction with IF=0!
+168019200000p[XGUI ] >>PANIC<< POWER button turned off.
+168019200000i[CPU0 ] CPU is in protected mode (halted)
+168019200000i[CPU0 ] CS.mode = 32 bit
+168019200000i[CPU0 ] SS.mode = 32 bit
+168019200000i[CPU0 ] EFER   = 0x00000000
+168019200000i[CPU0 ] | EAX=00000010  EBX=00000000  ECX=00000780  EDX=000003d5
+168019200000i[CPU0 ] | ESP=0009efb4  EBP=000001a4  ESI=00090000  EDI=00000ffc
+168019200000i[CPU0 ] | IOPL=0 id vip vif ac vm rf nt of DF if tf sf zf af PF cf
+168019200000i[CPU0 ] | SEG sltr(index|ti|rpl)     base    limit G D
+168019200000i[CPU0 ] |  CS:0008( 0001| 0|  0) 00000000 00ffffff 1 1
+168019200000i[CPU0 ] |  DS:0010( 0002| 0|  0) 00000000 00ffffff 1 1
+168019200000i[CPU0 ] |  SS:0010( 0002| 0|  0) 00000000 00ffffff 1 1
+168019200000i[CPU0 ] |  ES:0010( 0002| 0|  0) 00000000 00ffffff 1 1
+168019200000i[CPU0 ] |  FS:0010( 0002| 0|  0) 00000000 00ffffff 1 1
+168019200000i[CPU0 ] |  GS:0010( 0002| 0|  0) 00000000 00ffffff 1 1
+168019200000i[CPU0 ] | EIP=00006709 (00006709)
+168019200000i[CPU0 ] | CR0=0x80000013 CR2=0x00000000
+168019200000i[CPU0 ] | CR3=0x00000000 CR4=0x00000000
+168019200000i[CMOS ] Last time is 1509907850 (Sun Nov  5 10:50:50 2017)
+168019200000i[XGUI ] Exit
+168019200000i[CTRL ] quit_sim called with exit code 1

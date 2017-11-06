@@ -1,6 +1,12 @@
 #ifndef _HEAD_H
 #define _HEAD_H
 
+#define UTS_SYSNAME "Mos"
+#define UTS_NODENAME "(none)"	/* set by sethostname() */
+#define UTS_RELEASE "0"		/* patchlevel */
+#define UTS_VERSION "0.01"
+#define UTS_MACHINE "i386"	/* hardware type */
+
 typedef struct desc_struct {
 	unsigned long a,b;
 } desc_table[256];

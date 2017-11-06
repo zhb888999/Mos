@@ -37,5 +37,5 @@ void int_time(void) {
 	time++;
 	outb(0x20,0x20);
 	printk("time:%d\n",time);
-	sti();
+//	sti();
 }

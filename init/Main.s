@@ -29,11 +29,6 @@ int_time:
 	pushl	$.LC0
 	.cfi_def_cfa_offset 32
 	call	printk
-#APP
-# 40 "init/Main.c" 1
-	sti
-# 0 "" 2
-#NO_APP
 	addl	$28, %esp
 	.cfi_def_cfa_offset 4
 	ret

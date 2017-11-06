@@ -91,7 +91,7 @@ LOAD kernel/chr_drv/chr_drv.a
 .plt.got
  *(.plt.got)
 
-.text           0x0000000000000000     0x70d3
+.text           0x0000000000000000     0x6fd2
  *(.text.unlikely .text.*_unlikely .text.unlikely.*)
  .text.unlikely
                 0x0000000000000000        0x0 init/Main.o
@@ -110,37 +110,35 @@ LOAD kernel/chr_drv/chr_drv.a
                 0x00000000000054b8                idt
                 0x0000000000005cb8                gdt
  *fill*         0x00000000000064b8        0x8 
- .text          0x00000000000064c0      0x24b init/Main.o
-                0x00000000000064c0                int_test_trap
-                0x00000000000064f0                int_test_intr
-                0x0000000000006520                int_test_system
-                0x0000000000006550                Main
- .text          0x000000000000670b      0x8d2 kernel/kernel.o
-                0x000000000000670b                printk
-                0x000000000000693b                strcpy
-                0x0000000000006951                strncpy
-                0x0000000000006970                strcat
-                0x0000000000006993                strncat
-                0x00000000000069c0                strcmp
-                0x00000000000069e3                strncmp
-                0x0000000000006a0d                strchr
-                0x0000000000006a2c                strrchr
-                0x0000000000006a4d                strspn
-                0x0000000000006a80                strcspn
-                0x0000000000006ab3                strpbrk
-                0x0000000000006ae6                strstr
-                0x0000000000006b19                strlen
-                0x0000000000006b32                strtok
-                0x0000000000006bb0                memcpy
-                0x0000000000006bc6                memmove
-                0x0000000000006bec                memcmp
-                0x0000000000006c10                memchr
-                0x0000000000006c37                memset
-                0x0000000000006c4b                vsprintf
- .text          0x0000000000006fdd       0xf6 kernel/chr_drv/chr_drv.a(console.o)
-                0x0000000000006fdd                consloe_set_cursor
-                0x0000000000007010                consloe_clear
-                0x000000000000703d                console_print
+ .text          0x00000000000064c0      0x14a init/Main.o
+                0x00000000000064c0                int_time
+                0x00000000000064f0                Main
+ .text          0x000000000000660a      0x8d2 kernel/kernel.o
+                0x000000000000660a                printk
+                0x000000000000683a                strcpy
+                0x0000000000006850                strncpy
+                0x000000000000686f                strcat
+                0x0000000000006892                strncat
+                0x00000000000068bf                strcmp
+                0x00000000000068e2                strncmp
+                0x000000000000690c                strchr
+                0x000000000000692b                strrchr
+                0x000000000000694c                strspn
+                0x000000000000697f                strcspn
+                0x00000000000069b2                strpbrk
+                0x00000000000069e5                strstr
+                0x0000000000006a18                strlen
+                0x0000000000006a31                strtok
+                0x0000000000006aaf                memcpy
+                0x0000000000006ac5                memmove
+                0x0000000000006aeb                memcmp
+                0x0000000000006b0f                memchr
+                0x0000000000006b36                memset
+                0x0000000000006b4a                vsprintf
+ .text          0x0000000000006edc       0xf6 kernel/chr_drv/chr_drv.a(console.o)
+                0x0000000000006edc                consloe_set_cursor
+                0x0000000000006f0f                consloe_clear
+                0x0000000000006f3c                console_print
  *(.gnu.warning)
 
 .fini
@@ -149,13 +147,13 @@ LOAD kernel/chr_drv/chr_drv.a
                 [!provide]                        PROVIDE (_etext, .)
                 [!provide]                        PROVIDE (etext, .)
 
-.rodata         0x00000000000070d4      0x1fd
+.rodata         0x0000000000006fd4      0x175
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.1
-                0x00000000000070d4       0xe8 init/Main.o
- .rodata        0x00000000000071bc       0xc8 kernel/kernel.o
+                0x0000000000006fd4       0x60 init/Main.o
+ .rodata        0x0000000000007034       0xc8 kernel/kernel.o
  .rodata.str1.4
-                0x0000000000007284       0x4d kernel/kernel.o
+                0x00000000000070fc       0x4d kernel/kernel.o
 
 .rodata1
  *(.rodata1)
@@ -164,11 +162,11 @@ LOAD kernel/chr_drv/chr_drv.a
  *(.eh_frame_hdr)
  *(.eh_frame_entry .eh_frame_entry.*)
 
-.eh_frame       0x00000000000072d4      0x554
+.eh_frame       0x000000000000714c      0x484
  *(.eh_frame)
- .eh_frame      0x00000000000072d4      0x188 init/Main.o
- .eh_frame      0x000000000000745c      0x370 kernel/kernel.o
- .eh_frame      0x00000000000077cc       0x5c kernel/chr_drv/chr_drv.a(console.o)
+ .eh_frame      0x000000000000714c       0xb8 init/Main.o
+ .eh_frame      0x0000000000007204      0x370 kernel/kernel.o
+ .eh_frame      0x0000000000007574       0x5c kernel/chr_drv/chr_drv.a(console.o)
  *(.eh_frame.*)
 
 .gcc_except_table
@@ -179,7 +177,7 @@ LOAD kernel/chr_drv/chr_drv.a
 
 .exception_ranges
  *(.exception_ranges .exception_ranges*)
-                0x0000000000008828                . = DATA_SEGMENT_ALIGN (0x1000, 0x1000)
+                0x00000000000085d0                . = DATA_SEGMENT_ALIGN (0x1000, 0x1000)
 
 .eh_frame
  *(.eh_frame)
@@ -201,18 +199,18 @@ LOAD kernel/chr_drv/chr_drv.a
  *(.tbss .tbss.* .gnu.linkonce.tb.*)
  *(.tcommon)
 
-.preinit_array  0x0000000000008828        0x0
+.preinit_array  0x00000000000085d0        0x0
                 [!provide]                        PROVIDE (__preinit_array_start, .)
  *(.preinit_array)
                 [!provide]                        PROVIDE (__preinit_array_end, .)
 
-.init_array     0x0000000000008828        0x0
+.init_array     0x00000000000085d0        0x0
                 [!provide]                        PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*) SORT(.ctors.*))
  *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
                 [!provide]                        PROVIDE (__init_array_end, .)
 
-.fini_array     0x0000000000008828        0x0
+.fini_array     0x00000000000085d0        0x0
                 [!provide]                        PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*) SORT(.dtors.*))
  *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
@@ -245,48 +243,50 @@ LOAD kernel/chr_drv/chr_drv.a
 .got
  *(.got)
  *(.igot)
-                0x0000000000008828                . = DATA_SEGMENT_RELRO_END (., (SIZEOF (.got.plt) >= 0xc)?0xc:0x0)
+                0x00000000000085d0                . = DATA_SEGMENT_RELRO_END (., (SIZEOF (.got.plt) >= 0xc)?0xc:0x0)
 
-.got.plt        0x0000000000008828        0x0
+.got.plt        0x00000000000085d0        0x0
  *(.got.plt)
  *(.igot.plt)
 
-.data           0x0000000000008828        0x9
+.data           0x00000000000085d0        0x9
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x0000000000008828        0x0 boot/head.o
- .data          0x0000000000008828        0x8 init/Main.o
-                0x0000000000008828                init_stack
- .data          0x0000000000008830        0x0 kernel/kernel.o
- .data          0x0000000000008830        0x1 kernel/chr_drv/chr_drv.a(console.o)
-                0x0000000000008830                font_arrt
+ .data          0x00000000000085d0        0x0 boot/head.o
+ .data          0x00000000000085d0        0x8 init/Main.o
+                0x00000000000085d0                init_stack
+ .data          0x00000000000085d8        0x0 kernel/kernel.o
+ .data          0x00000000000085d8        0x1 kernel/chr_drv/chr_drv.a(console.o)
+                0x00000000000085d8                font_arrt
 
 .data1
  *(.data1)
-                0x0000000000008831                _edata = .
+                0x00000000000085d9                _edata = .
                 [!provide]                        PROVIDE (edata, .)
-                0x0000000000008831                . = .
-                0x0000000000008831                __bss_start = .
+                0x00000000000085d9                . = .
+                0x00000000000085d9                __bss_start = .
 
-.bss            0x0000000000008840      0x40c
+.bss            0x00000000000085e0      0x42c
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x0000000000008840        0x0 boot/head.o
- .bss           0x0000000000008840        0x0 init/Main.o
- .bss           0x0000000000008840      0x400 kernel/kernel.o
- .bss           0x0000000000008c40        0x4 kernel/chr_drv/chr_drv.a(console.o)
-                0x0000000000008c40                fg_console
+ .bss           0x00000000000085e0        0x0 boot/head.o
+ .bss           0x00000000000085e0        0x4 init/Main.o
+                0x00000000000085e0                time
+ *fill*         0x00000000000085e4       0x1c 
+ .bss           0x0000000000008600      0x400 kernel/kernel.o
+ .bss           0x0000000000008a00        0x4 kernel/chr_drv/chr_drv.a(console.o)
+                0x0000000000008a00                fg_console
  *(COMMON)
- COMMON         0x0000000000008c44        0x4 init/Main.o
-                0x0000000000008c44                mem_size
- COMMON         0x0000000000008c48        0x4 kernel/kernel.o
-                0x0000000000008c48                ___strtok
-                0x0000000000008c4c                . = ALIGN ((. != 0x0)?0x4:0x1)
-                0x0000000000008c4c                . = ALIGN (0x4)
-                0x0000000000008c4c                . = SEGMENT_START ("ldata-segment", .)
-                0x0000000000008c4c                . = ALIGN (0x4)
-                0x0000000000008c4c                _end = .
+ COMMON         0x0000000000008a04        0x4 init/Main.o
+                0x0000000000008a04                mem_size
+ COMMON         0x0000000000008a08        0x4 kernel/kernel.o
+                0x0000000000008a08                ___strtok
+                0x0000000000008a0c                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x0000000000008a0c                . = ALIGN (0x4)
+                0x0000000000008a0c                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000000008a0c                . = ALIGN (0x4)
+                0x0000000000008a0c                _end = .
                 [!provide]                        PROVIDE (end, .)
-                0x0000000000008c4c                . = DATA_SEGMENT_END (.)
+                0x0000000000008a0c                . = DATA_SEGMENT_END (.)
 
 .stab
  *(.stab)

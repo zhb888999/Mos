@@ -19,7 +19,7 @@ void Main(void)
 	outb_p(0x36,0x43);
 	outb_p(LATCH & 0xff,0x40);
 	outb_p(LATCH >> 8,0x40);
-	set_intr_gate(0x20,&int_time);
+	set_system_gate(0x20,&int_time);
 	sti();
 	outb(inb_p(0x21)&~0x01,0x21);
 	printk("pg_dir:%p\n",&pg_dir);
@@ -31,11 +31,9 @@ void Main(void)
 	printk("idt:%p\n",&idt);
 	printk("init_stack:%p\n",&init_stack);
 	printk("mem_size:%d\n",mem_size);
-	while(1);	
+	for(;;);	
 }
 void int_time(void) {
 	time++;
 	outb(0x20,0x20);
-	printk("time:%d\n",time);
-//	sti();
 }

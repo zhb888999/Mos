@@ -1,63 +1,51 @@
 	.file	"Main.c"
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.LC0:
-	.string	"time:%d\n"
 	.section	.text.unlikely,"ax",@progbits
-.LCOLDB1:
+.LCOLDB0:
 	.text
-.LHOTB1:
+.LHOTB0:
 	.p2align 4,,15
 	.globl	int_time
 	.type	int_time, @function
 int_time:
 .LFB1:
 	.cfi_startproc
-	subl	$20, %esp
-	.cfi_def_cfa_offset 24
-	movl	time, %eax
+	addl	$1, time
 	movl	$32, %edx
-	leal	1(%eax), %ecx
 	movl	$32, %eax
-	movl	%ecx, time
 #APP
 # 38 "init/Main.c" 1
 	outb %al,%dx
 # 0 "" 2
 #NO_APP
-	pushl	%ecx
-	.cfi_def_cfa_offset 28
-	pushl	$.LC0
-	.cfi_def_cfa_offset 32
-	call	printk
-	addl	$28, %esp
-	.cfi_def_cfa_offset 4
 	ret
 	.cfi_endproc
 .LFE1:
 	.size	int_time, .-int_time
 	.section	.text.unlikely
-.LCOLDE1:
+.LCOLDE0:
 	.text
-.LHOTE1:
-	.section	.rodata.str1.1
-.LC2:
+.LHOTE0:
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.LC1:
 	.string	"pg_dir:%p\n"
-.LC3:
+.LC2:
 	.string	"pg0:%p\n"
-.LC4:
+.LC3:
 	.string	"pg1:%p\n"
-.LC5:
+.LC4:
 	.string	"pg2:%p\n"
-.LC6:
+.LC5:
 	.string	"pg3:%p\n"
-.LC7:
+.LC6:
 	.string	"gdt:%p\n"
-.LC8:
+.LC7:
 	.string	"idt:%p\n"
-.LC9:
+.LC8:
 	.string	"init_stack:%p\n"
-.LC10:
+.LC9:
 	.string	"mem_size:%d\n"
+.LC10:
+	.string	"time:%d\n"
 	.section	.text.unlikely
 .LCOLDB11:
 	.text
@@ -112,7 +100,7 @@ Main:
 #APP
 # 22 "init/Main.c" 1
 	movw %dx,%ax
-	movw $-29184,%dx
+	movw $-4352,%dx
 	movl %eax,idt+256
 	movl %edx,idt+260
 # 0 "" 2
@@ -137,7 +125,7 @@ Main:
 #NO_APP
 	pushl	$pg_dir
 	.cfi_def_cfa_offset 28
-	pushl	$.LC2
+	pushl	$.LC1
 	.cfi_def_cfa_offset 32
 	call	printk
 	popl	%eax
@@ -146,7 +134,7 @@ Main:
 	.cfi_def_cfa_offset 24
 	pushl	$pg0
 	.cfi_def_cfa_offset 28
-	pushl	$.LC3
+	pushl	$.LC2
 	.cfi_def_cfa_offset 32
 	call	printk
 	popl	%ecx
@@ -155,7 +143,7 @@ Main:
 	.cfi_def_cfa_offset 24
 	pushl	$pg1
 	.cfi_def_cfa_offset 28
-	pushl	$.LC4
+	pushl	$.LC3
 	.cfi_def_cfa_offset 32
 	call	printk
 	popl	%eax
@@ -164,7 +152,7 @@ Main:
 	.cfi_def_cfa_offset 24
 	pushl	$pg2
 	.cfi_def_cfa_offset 28
-	pushl	$.LC5
+	pushl	$.LC4
 	.cfi_def_cfa_offset 32
 	call	printk
 	popl	%ecx
@@ -173,7 +161,7 @@ Main:
 	.cfi_def_cfa_offset 24
 	pushl	$pg3
 	.cfi_def_cfa_offset 28
-	pushl	$.LC6
+	pushl	$.LC5
 	.cfi_def_cfa_offset 32
 	call	printk
 	popl	%eax
@@ -182,7 +170,7 @@ Main:
 	.cfi_def_cfa_offset 24
 	pushl	$gdt
 	.cfi_def_cfa_offset 28
-	pushl	$.LC7
+	pushl	$.LC6
 	.cfi_def_cfa_offset 32
 	call	printk
 	popl	%ecx
@@ -191,7 +179,7 @@ Main:
 	.cfi_def_cfa_offset 24
 	pushl	$idt
 	.cfi_def_cfa_offset 28
-	pushl	$.LC8
+	pushl	$.LC7
 	.cfi_def_cfa_offset 32
 	call	printk
 	popl	%eax
@@ -200,7 +188,7 @@ Main:
 	.cfi_def_cfa_offset 24
 	pushl	$init_stack
 	.cfi_def_cfa_offset 28
-	pushl	$.LC9
+	pushl	$.LC8
 	.cfi_def_cfa_offset 32
 	call	printk
 	popl	%ecx
@@ -209,13 +197,24 @@ Main:
 	.cfi_def_cfa_offset 24
 	pushl	mem_size
 	.cfi_def_cfa_offset 28
+	pushl	$.LC9
+	.cfi_def_cfa_offset 32
+	call	printk
+	addl	$16, %esp
+	.cfi_def_cfa_offset 16
+	.p2align 4,,10
+	.p2align 3
+.L3:
+	subl	$8, %esp
+	.cfi_def_cfa_offset 24
+	pushl	time
+	.cfi_def_cfa_offset 28
 	pushl	$.LC10
 	.cfi_def_cfa_offset 32
 	call	printk
 	addl	$16, %esp
 	.cfi_def_cfa_offset 16
-.L4:
-	jmp	.L4
+	jmp	.L3
 	.cfi_endproc
 .LFE0:
 	.size	Main, .-Main
